@@ -1,0 +1,20 @@
+version: "3.5"
+
+services:
+  chefserver:
+    container_name: chef-workstation
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        CODE_VERSION: 18.04
+        BASE_DISTRO: ubuntu
+    ports:
+      - 443:443
+    networks:
+      - mitlabs
+    restart: always
+networks:
+  mitlabs:
+    name: mitlabs
+    driver: bridge
