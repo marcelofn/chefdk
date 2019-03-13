@@ -8,6 +8,8 @@ LABEL maintainer="<marcelo.frneves@gmail.com>"
 ENV DEBIAN_FRONTEND noninteractive
 ENV CHEFUSER=chefadmin
 ENV	CHEFPASS="changeme!!"
+ENV CHEFDK=false
+ENV CHEFCHECK_INSTALL=false
 
 RUN apt-get update -y && \
 	apt-get install wget sudo -y --no-install-recommends
@@ -16,7 +18,7 @@ ADD docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
-RUN useradd ${CHEFUSER} -s /bin/bash && \
+RUN useradd -m ${CHEFUSER} -s /bin/bash && \
     (echo "${CHEFPASS}" ; echo "${CHEFPASS}") \
     | passwd ${CHEFUSER} && gpasswd -a ${CHEFUSER} sudo
 
