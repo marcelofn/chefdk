@@ -23,8 +23,6 @@
 sha256="83b96eb28891d3f89d58c3ffefa61c0d8aa605911c3b90d8c5cb92a75602e56d"
 local_file="/tmp/chefdk_3.8.14-1_amd64.deb"
 chefdk_url="https://packages.chef.io/files/stable/chefdk/3.8.14/ubuntu/18.04/chefdk_3.8.14-1_amd64.deb"
-CHEFDK=false
-CHEFCHECK_INSTALL=false
 
 installchefdk() {
 	if [[ $sha256 == $(wget --no-check-certificate	 $chefdk_url -O $local_file && \
